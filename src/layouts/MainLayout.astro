@@ -1,6 +1,8 @@
 ---
 import Navbar from '../components/navbar.astro'
 import Footer from '../components/footer.astro'
+
+const { title = "Articles, Stories & Tutorials for Tech people" } = Astro.props
 ---
 <html lang="en">
   <head>
@@ -12,7 +14,7 @@ import Footer from '../components/footer.astro'
 			crossorigin="anonymous"
 			referrerpolicy="no-referrer"
 		></script>
-		<title>Tech People Blog</title>
+		<title>{title}</title>
 	</head>
   <body class="">
     <Navbar />
