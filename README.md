@@ -29,10 +29,13 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| `npx astro sync`          | Sync astro types                                 |
 
 ## Tailwind
 Run `npx astro add tailwind`
+
+## Prettier
+Run `npm install -D prettier-plugin-astro`
+
+## Deployment
+To deploy to vercel (rollingsxshi), run `npx astro add vercel`
