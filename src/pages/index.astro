@@ -3,6 +3,7 @@ import Card from '../components/Card.astro'
 import MainLayout from '../layouts/MainLayout.astro'
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { formatDate } from '../utils'
 
 const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog')
 ---
@@ -87,7 +88,7 @@ const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog')
         <Card
           imageUrl={article.data.image}
           title={article.data.title}
-          articleDate={article.data.pubDate}
+          articleDate={formatDate(article.data.pubDate)}
           tags={article.data.tags}
           slug={article.slug}
         />
