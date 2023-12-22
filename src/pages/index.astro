@@ -1,6 +1,10 @@
 ---
 import Card from '../components/Card.astro'
 import MainLayout from '../layouts/MainLayout.astro'
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog')
 ---
 
 <MainLayout>
@@ -79,48 +83,15 @@ import MainLayout from '../layouts/MainLayout.astro'
 
     <!-- Main Grid -->
     <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <!-- Article Card -->
-      <Card
-        imageUrl="image2.png"
-        title="Guardian of the Digital Realm: Web Security"
-        articleDate="January 19, 2024"
-        tags={['Code', 'Software']}
-      />
-      <!-- Article Card -->
-      <Card
-        imageUrl="image3.png"
-        title="Immerse in the Virtual World: VR Development"
-        articleDate="January 18, 2024"
-        tags={['VR', 'Tech']}
-      />
-      <!-- Article Card -->
-      <Card
-        imageUrl="image4.png"
-        title="Elevate Your Mobile Experience with Samsung"
-        articleDate="January 17, 2024"
-        tags={['Smartphones', 'Samsung']}
-      />
-      <!-- Article Card -->
-      <Card
-        imageUrl="image5.png"
-        title="Soaring to New Heights: The World of Drones"
-        articleDate="January 16, 2024"
-        tags={['Drones', 'Tech']}
-      />
-      <!-- Article Card -->
-      <Card
-        imageUrl="image6.png"
-        title="Capturing Life's Moments with Canon Excellence"
-        articleDate="January 14, 2024"
-        tags={['Cameras', 'Gadgets']}
-      />
-      <!-- Article Card -->
-      <Card
-        imageUrl="image7.png"
-        title="Unleash Creativity With These Cutting-Edge Tablets"
-        articleDate="January 13, 2024"
-        tags={['Gadgets', 'Tablets']}
-      />
+      {allBlogArticles.map(article => (
+        <Card
+          imageUrl={article.data.image}
+          title={article.data.title}
+          articleDate={article.data.pubDate}
+          tags={article.data.tags}
+          slug={article.slug}
+        />
+      ))}
     </div>
   </div>
 

@@ -4,14 +4,15 @@ interface Props {
   title: string;
   articleDate: string;
   tags: string[];
+  slug: string
 }
 
-const { imageUrl, title, articleDate, tags } = Astro.props
+const { imageUrl, title, articleDate, tags, slug } = Astro.props
 ---
 
 <div class="max-w-md mx-auto mt-10">
   <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-    <a href="article.html">
+    <a href={`/articles/${slug}`}>
       <img
         src={`/images/${imageUrl}`}
         alt="Article Image"
@@ -24,9 +25,13 @@ const { imageUrl, title, articleDate, tags } = Astro.props
       </h2>
       <p class="text-gray-600 text-sm mb-4">${articleDate}</p>
       <div class="flex flex-wrap gap-2">
-        {tags.map((t) => (
-          <span class="px-2 py-1 bg-blue-500 text-white rounded-full text-xs hover:opacity-90">
-          <a href="">{t}</a>
+        {tags.map((t: string, i: number) => (
+          <span class={
+            i % 2 === 0 ?
+            "px-2 py-1 bg-green-500 text-white rounded-full text-xs hover:opacity-90"
+            : "px-2 py-1 bg-indigo-500 text-white rounded-full text-xs hover:opacity-90"
+          }>
+          <a href={`/articles/tag/${t}`}>{t}</a>
         </span>
         ))}
       </div>
