@@ -1,9 +1,8 @@
 ---
-const { currentPage, totalPages, disablePrev, disableNext } = Astro.props;
+const { currentPage, disablePrev, disableNext } = Astro.props;
 
 interface Props {
   currentPage: number;
-  totalPages: number;
   disablePrev: boolean;
   disableNext: boolean;
 }

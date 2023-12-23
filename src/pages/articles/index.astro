@@ -40,7 +40,6 @@ const articlesForPage: CollectionEntry<"blog">[] = allBlogArticles.slice(
   <!-- Pagination -->
   <Pagination
     currentPage={currentPage}
-    totalPages={totalPages}
     disablePrev={currentPage === 1}
     disableNext={currentPage === totalPages}
   />
